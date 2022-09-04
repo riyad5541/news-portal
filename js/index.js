@@ -21,6 +21,15 @@ const displayCategories = allCategories => {
 }
 
 
+const loadAllCategories = (code) => {
+  const url = `https://openapi.programming-hero.com/api/news/category/${code}`
+  // console.log('get country detail',code);
+  // console.log(url)
+  fetch(url)
+    .then(res => res.json())
+    .then(data => displayCategory(data.data))
+}
+
 
 
 
