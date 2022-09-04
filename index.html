@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>news-feed</title>
+    <link rel="stylesheet" href="style/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="container navbar bg-light">
+        <div class="container-fluid">
+            <p class="navbar-brand"><span class="bg-primary rounded text-white p-2">News</span> <span
+                    class="text-primary">All Time</span></p>
+            <form class="d-flex" role="search">
+                <p class="text-primary px-2">News</p>
+                <p data-bs-toggle="modal" data-bs-target="#exampleModal">Blog</p>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Some important questions</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>question no-1:Difference between var, let and const?</p>
+          <p>The differences between var, let, and const variable declaration in JavaScript include:
+            Variables declared with var and const are scoped to the immediate function body.
+            Variables declared with the var keyword are hoisted. Hoisting means that the variable can be accessed in their enclosing scope even before they are declared.
+            Variables declared with the let keyword are block-scoped, which means the variables will have scope to the immediate enclosing block.
+         </p>Question no-2: Why we use template string?</p>
+         <p>Template literals provide an easy way to interpolate variables and expressions into strings.
+
+            The method is called string interpolation.
+            
+            The syntax is:
+            
+            ${...}Automatic replacing of variables with real values is called string interpolation.</p>
+         <p>Question no-3: Difference between regular and arrow function?</p>
+         <p>Regular function
+            Inside of a regular JavaScript function, this value (aka the execution context) is dynamic.
+            
+            The dynamic context means that the value of this depends on how the function is invoked. In JavaScript, there are 4 ways you can invoke a regular function.
+            
+            During a simple invocation the value of this equals to the global object (or undefined if the function runs in strict mode):
+            
+            function myFunction() {
+              console.log(this);
+            }
+            // Simple invocation
+            myFunction(); // logs global object (window)
+            During a method invocation the value of this is the object owning the method:
+            
+            const myObject = {
+              method() {
+                console.log(this);
+              }
+            };
+            // Method invocation
+            myObject.method(); // logs myObject
+            During an indirect invocation using myFunc.call(thisVal, arg1, ..., argN) or myFunc.apply(thisVal, [arg1, ..., argN]) the value of this equals to the first argument:
+            
+            function myFunction() {
+              console.log(this);
+            }
+            const myContext = { value: 'A' };
+            myFunction.call(myContext);  // logs { value: 'A' }
+            myFunction.apply(myContext); // logs { value: 'A' }
+            During a constructor invocation using new keyword this equals to the newly created instance:
+            
+            function MyFunction() {
+              console.log(this);
+            }
+            new MyFunction(); // logs an instance of MyFunctionThe behavior of this inside of an arrow function differs considerably from the regular function's this behavior. The arrow function doesn't define its own execution context.
+
+            No matter how or where being executed, this value inside of an arrow function always equals this value from the outer function. In other words, the arrow function resolves this lexically.
+            
+            In the following example, myMethod() is an outer function of callback() arrow function:
+            
+            const myObject = {
+              myMethod(items) {
+                console.log(this); // logs myObject
+                const callback = () => {
+                  console.log(this); // logs myObject
+                };
+                items.forEach(callback);
+              }
+            };
+            myObject.myMethod([1, 2, 3]); 
+            this value inside the arrow function callback() equals to this of the outer function myMethod().
+            
+            this resolved lexically is one of the great features of arrow functions. When using callbacks inside methods you are sure the arrow function doesn't define its own this: no more const self = this or callback.bind(this) workarounds.
+            
+            Contrary to a regular function, the indirect invocation of an arrow function using myArrowFunc.call(thisVal) or myArrowFunc.apply(thisVal) doesn't change the value of this: the context value is always resolved lexically.
+            
+            2. Constructors
+            2.1 Regular function
+            As seen in the previous section, the regular function can easily construct objects.
+            
+            For example, the new Car() function creates instances of a car:
+            
+            function Car(color) {
+              this.color = color;
+            }
+            const redCar = new Car('red');
+            redCar instanceof Car; // => true
+            Car is a regular function. When invoked with new keyword new Car('red') — new instances of Car type are created.
+            
+            2.2 Arrow function
+            A consequence of this resolved lexically is that an arrow function cannot be used as a constructor.
+            
+            If you try to invoke an arrow function prefixed with new keyword, JavaScrip throws an error:
+            
+            const Car = (color) => {
+              this.color = color;
+            };
+            const redCar = new Car('red'); // TypeError: Car is not a constructor 
+            Invoking new Car('red'), where Car is an arrow function, throws TypeError: Car is not a constructor.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+            </form>
+        </div>
+    </nav>
+    <hr>
+<header>
+    <div class="container">
+        <nav id="categories-container" class="navbar navbar-expand-lg navbar-light bg-light">
+            <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+        </nav>
+    </div>
+    <!-- <div id="show-total-items" class="container"> -->
+         <!-- <div class="mb-3">
+            <input type="email" class="form-control" id="exampleFormControlInput1">
+          </div> -->
+
+    </div>
+
+</header>
+
+
+<section class="container mb-5 bg-light p-2 fs-5 rounded fw-bold">
+    <p id="newsNumber"></p>
+</section>
+
+    <!-- <input class="form-control" type="text" placeholder="Default input" aria-label="default input example"> -->
+
+    <main class="container">
+        <section>
+            <div id="all-category-container" class="card mb-3" data-bs-toggle="modal" data-bs-target="#newsDetailModal">
+                <button class="d-none"></button>
+             
+            </div>
+
+        </section>
+
+        <section id="loader" class="d-none">
+            <div style="height: 400px;" class="d-flex justify-content-center align-items-center">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        </section>
+
+        <section>
+
+            <!-- Modal -->
+            <div class="modal fade" id="newsDetailModal" tabindex="-1" aria-labelledby="newsDetailModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="newsDetailModalLabel">Modal title</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            ...
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <script src="js/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/fdd6ea9b9b.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
