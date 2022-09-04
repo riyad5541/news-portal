@@ -25,6 +25,8 @@ const loadAllCategories = (code) => {
   const url = `https://openapi.programming-hero.com/api/news/category/${code}`
   // console.log('get country detail',code);
   // console.log(url)
+  const spinner = document.getElementById('spinner');
+  spinner.classList.remove("d-none");
   fetch(url)
     .then(res => res.json())
     .then(data => displayCategory(data.data))
@@ -32,6 +34,7 @@ const loadAllCategories = (code) => {
 
 const displayCategory = onlyCategoty => {
   // console.log(onlyCategoty)
+  spinner.classList.add("d-none");
   const newsNumber = document.getElementById('newsNumber');
   newsNumber.innerText =` ${onlyCategoty.length} items found`
   onlyCategoty.sort(function (a,b){
