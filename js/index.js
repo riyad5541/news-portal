@@ -45,6 +45,7 @@ const displayModel = model =>{
     modalTaitle.innerText = onlyModel.title;
     const newsDetails = document.getElementById('newsdetails');
     newsDetails.innerHTML = `
+    <p>${onlyModel.details}</p>
     <img src=" ${onlyModel.author.img}"style="height: 150px;" class="rounded-circle mb-2" alt="...">
     <p class="mx-2">${onlyModel.author.name ? onlyModel.author.name : 'No Data Available'} <span class="mx-5">View: ${onlyModel.total_view ? onlyModel.total_view : 'No Data Available'}</span></p>
     `
