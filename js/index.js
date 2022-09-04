@@ -32,6 +32,26 @@ const loadAllCategories = (code) => {
     .then(data => displayCategory(data.data))
 }
 
+const loadModal = async(id) =>{
+  const url = (`https://openapi.programming-hero.com/api/news/${id}`);
+  const res = await fetch(url);
+  const data = await res.json();
+  displayModel(data.data) ;
+}
+const displayModel = model =>{
+  for(const onlyModel of model){
+    // console.log(onlyModel);
+    const modalTaitle = document.getElementById('allNewsModalLabel');
+    modalTaitle.innerText = onlyModel.title;
+    const newsDetails = document.getElementById('newsdetails');
+    newsDetails.innerHTML = `
+    <img src=" ${onlyModel.author.img}"style="height: 150px;" class="rounded-circle mb-2" alt="...">
+    <p class="mx-2">${onlyModel.author.name ? onlyModel.author.name : 'No Data Available'} <span class="mx-5">View: ${onlyModel.total_view ? onlyModel.total_view : 'No Data Available'}</span></p>
+    `
+  }
+
+}
+
 const displayCategory = onlyCategoty => {
   // console.log(onlyCategoty)
   spinner.classList.add("d-none");
@@ -58,18 +78,19 @@ const displayCategory = onlyCategoty => {
             <p class="card-text">${category.details.length > 200 ? category.details.slice(0, 200) + '...' : category.details}</p>
             <div>
             <img src=" ${category.author.img}"style="height: 80px;" class="rounded-circle" alt="...">
-           <span>
-           <p>${category.author.name}</p>
-           <span <i class="fa-solid fa-eye"></i>${category.total_view}</span>
-           <span <i class="fa-solid fa-arrow-right mx-5"></i> </span>
+           <span class="d-flex">
+           <p class="mx-2">${category.author.name ? category.author.name : 'No Data Available'}</p>
+           <span <i class="fa-solid fa-eye mx-5"></i>${category.total_view ? category.total_view : 'No Data Available'}</span>
+           <span <i onclick="loadModal('${category._id}')" class="fa-solid fa-arrow-right mx-5" data-bs-toggle="modal" data-bs-target="#allNewsModal"></i> </span>
            </span>
            </di
           </div>
         </div>            
   `;
-  
+
   displayAll.appendChild(categoriesDiv);
   })
+  
 }
 
 // loadAllCategories()

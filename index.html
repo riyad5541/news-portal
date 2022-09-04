@@ -17,13 +17,13 @@
                     class="text-primary">All Time</span></p>
             <form class="d-flex" role="search">
                 <p class="text-primary px-2">News</p>
-                <p data-bs-toggle="modal" data-bs-target="#exampleModal">Blog</p>
+                <p data-bs-toggle="modal" data-bs-target="#alNewsModal">Blog</p>
   <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="alNewsModal" tabindex="-1" aria-labelledby="alNewsModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Some important questions</h5>
+          <h5 class="modal-title" id="alNewsModalLabel">Some important questions</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -157,8 +157,7 @@
 
     <main class="container">
         <section>
-            <div id="all-category-container" class="card mb-3" data-bs-toggle="modal" data-bs-target="#newsDetailModal">
-                <button class="d-none"></button>
+            <div id="all-category-container" class="card mb-3">
              
             </div>
 
@@ -173,25 +172,24 @@
         </section>
 
         <section>
-
-            <!-- Modal -->
-            <div class="modal fade" id="newsDetailModal" tabindex="-1" aria-labelledby="newsDetailModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="newsDetailModalLabel">Modal title</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            ...
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="allNewsModal" tabindex="-1" aria-labelledby="allNewsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="allNewsModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div id="newsdetails" class="modal-body">
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
         </section>
 
     </main>
