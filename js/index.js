@@ -30,6 +30,56 @@ const loadAllCategories = (code) => {
     .then(data => displayCategory(data.data))
 }
 
+const displayCategory = onlyCategoty => {
+  // console.log(onlyCategoty)
+  const newsNumber = document.getElementById('newsNumber');
+  newsNumber.innerText =` ${onlyCategoty.length} items found`
+  onlyCategoty.sort(function (a,b){
+    return b.total_view - a.total_view;
+  });
+
+
+  const displayAll = document.getElementById('all-category-container');
+  displayAll.innerHTML = ``; 
+  onlyCategoty.forEach(category => {
+    // console.log(category);
+    const categoriesDiv = document.createElement('div');
+    categoriesDiv.classList.add('row');
+    categoriesDiv.innerHTML = `
+        <div class="col-md-4 my-3">
+          <img src="${category.thumbnail_url}" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">${category.title}</h5>
+            <p class="card-text">${category.details.length > 200 ? category.details.slice(0, 200) + '...' : category.details}</p>
+            <div>
+            <img src=" ${category.author.img}"style="height: 80px;" class="rounded-circle" alt="...">
+           <span>
+           <p>${category.author.name}</p>
+           <span <i class="fa-solid fa-eye"></i>${category.total_view}</span>
+           <span <i class="fa-solid fa-arrow-right mx-5"></i> </span>
+           </span>
+           </di
+          </div>
+        </div>            
+  `;
+  
+  displayAll.appendChild(categoriesDiv);
+  })
+}
+
+// loadAllCategories()
+
+// const loadNewsDetails = async id =>{
+//   const url = ` https://openapi.programming-hero.com/api/news/${id}`
+//   const res = await fetch(url);
+//   const data = await res.json();
+// }
+
+loadCategories()
+
+
 
 
 
