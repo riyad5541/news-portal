@@ -27,20 +27,20 @@ const loadAllCategories = (code) => {
   // console.log(url)
   const spinner = document.getElementById('spinner');
   spinner.classList.remove("d-none");
-    fetch(url)
+  fetch(url)
     .then(res => res.json())
     .catch(error => alert(error))
     .then(data => displayCategory(data.data))
-  }
+}
 
-const loadModal = async(id) =>{
+const loadModal = async (id) => {
   const url = (`https://openapi.programming-hero.com/api/news/${id}`);
   const res = await fetch(url);
   const data = await res.json();
-  displayModel(data.data) ;
+  displayModel(data.data);
 }
-const displayModel = model =>{
-  for(const onlyModel of model){
+const displayModel = model => {
+  for (const onlyModel of model) {
     // console.log(onlyModel);
     const modalTaitle = document.getElementById('allNewsModalLabel');
     modalTaitle.innerText = onlyModel.title;
@@ -58,14 +58,14 @@ const displayCategory = onlyCategoty => {
   // console.log(onlyCategoty)
   spinner.classList.add("d-none");
   const newsNumber = document.getElementById('newsNumber');
-  newsNumber.innerText =` ${onlyCategoty.length ? onlyCategoty.length : 'No News Found'} items found`
-  onlyCategoty.sort(function (a,b){
+  newsNumber.innerText = ` ${onlyCategoty.length ? onlyCategoty.length : 'No News Found'} items found`
+  onlyCategoty.sort(function (a, b) {
     return b.total_view - a.total_view;
   });
 
 
   const displayAll = document.getElementById('all-category-container');
-  displayAll.innerHTML = ``; 
+  displayAll.innerHTML = ``;
   onlyCategoty.forEach(category => {
     // console.log(category);
     const categoriesDiv = document.createElement('div');
@@ -90,9 +90,9 @@ const displayCategory = onlyCategoty => {
         </div>            
   `;
 
-  displayAll.appendChild(categoriesDiv);
+    displayAll.appendChild(categoriesDiv);
   })
-  
+
 }
 
 // loadAllCategories()
